@@ -1,0 +1,20 @@
+How to upload the zekkei contents:
+
+[Single Uploading]
+- 1. Run Google App Engine Launcher
+- 2. Visit 'http://localhost:XXXX/upload' by using your web browser
+     // X depends on which port you want to use.
+     // Deafult X should be 8080.
+
+[Bulk Uploading]
+1. Fill in the zekkei contentes in './bulk-upload.csv'
+   -> Rule: Message | Location Data | Picture URL
+2. Run 'Google App Engine Launcher'
+3. Visit 'http://localhost:XXXX/upload/bulk' by using your web browser
+   // X depends on which port you want to use.
+   // Deafult X should be 8080.
+
+NOTE:
+The Zekkei Contents in Local Server Database are
+ALWAYS FLASHED when you stop running the daemon process.
+Therefore, you have to upload the data each time you run.

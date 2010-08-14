@@ -1,0 +1,24 @@
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>CSVファイルのアップロード</title>
+  </head>
+  <body>
+    <table><tr>
+	<th>Zekkei ID</th>
+	<th>Message</th>
+	<th>Location</th>
+	<th>Picture URL</th>
+      </tr>
+      {% for m in messages %}
+      <tr>
+	<th>{{m.zid}}</th>
+	<th>{{m.msg}}</th>
+	<th>{{m.loc}}</th>
+	<th>{{m.pict_url}}</th>
+      </tr>
+      {% endfor %}
+    </table>
+    <hr />
+  </body>
+</html>

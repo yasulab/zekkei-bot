@@ -1,0 +1,39 @@
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Bulk Uploading</title>
+  </head>
+  <body>
+    <hr />
+    <form method="post" action="#" enctype="multipart/form-data">
+      File: <input type="file" name="file" size="30" />
+      <input type="submit" value="upload" />
+    </form>
+    <br/>
+    <div>
+//TODO: How to upload the Zekkei contents???<br/>      
+How to upload the zekkei contents:<br/>
+<br/>
+<b>[Single Uploading](Under Construction)</b><br/>
+- 1. Run Google App Engine Launcher<br/>
+- 2. Visit 'http://localhost:XXXX/upload' by using your web browser<br/>
+     // X depends on which port you want to use.<br/>
+     // Deafult X should be 8080.<br/>
+<br/>
+<b>[Bulk Uploading]</b><br/>
+1. Fill in the zekkei contentes in './bulk-upload.csv'<br/>
+   -> Rule: Zekkei ID | Message | Location Data | Picture URL<br/>
+   -> cf. 'sample-data.csv'<br/>
+2. Run 'Google App Engine Launcher'<br/>
+3. Visit 'http://localhost:XXXX/upload/bulk' by using your web browser<br/>
+   // X depends on which port you want to use.<br/>
+   // Deafult X should be 8080.<br/>
+<br/>
+<b>NOTE:</b> <br/>
+The Zekkei Contents in Local Server Database are<br/>
+<font color='red'>ALWAYS FLASHED</font> when you stop running the daemon process.<br/>
+Therefore, you have to upload the data each time you run.<br/>
+      <br/>
+    </div>
+  </body>
+</html>

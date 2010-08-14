@@ -1,0 +1,16 @@
+from google.appengine.tools import bulkloader
+from models import Message
+
+
+class DataLoader(bulkloader.Loader):
+    def __init__(self):
+        bulkloader.Loader.__init__(self, 'Message', [
+            ('wid', int),
+            ('cnt', int),
+            ('reading',  str),
+            ('word',  str),
+            ('dscr',  str),
+            ('ctgr',  str),
+            ])
+        
+loaders = [DataLoader]
