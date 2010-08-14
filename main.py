@@ -156,7 +156,7 @@ def main():
 	# Global Variables
 	global BOT_USERNAME,BOT_PASSWORD,BR,MAX_LEN,MAX_DB,DEBUG_DB,SPACE,DT_FORMAT
 	BOT_USERNAME = 'zekkei_bot'
-	BOT_PASSWORD = 'motivation-zen'
+	BOT_PASSWORD = '???'
         BR = "<br>"
 	MAX_LEN = 140
 	DEBUG_DB = 4
