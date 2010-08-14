@@ -71,16 +71,19 @@ class Random(webapp.RequestHandler):
 				rand = random.randint(0,DEBUG_DB)
 			else:
 				rand = random.randint(0,MAX_DB)
-			query = db.GqlQuery("SELECT * FROM Message WHERE zid = " + str(rand))
+			cmdline = "SELECT * FROM Message WHERE zid = " + str(rand)
+			query = db.GqlQuery(cmdline)
+			#print "cmdline = " + cmdline
 			qlist.append(query[0])
 			print getRandomlySelectedWord()
-		print
+		print "[Zekkei ID]\t[Message]\t[Location]\t[Picture URL]"
 		for q in qlist:
-			print q.zid,
-			print q.msg.encode('utf-8'),
-			print q.loc.encode('utf-8'),
-			print q.pict_url.encode('utf-8'),
+			print str(q.zid) + '\t\t',
+			print q.msg.encode('utf-8') + '\t',
+			print q.loc.encode('utf-8') + '\t',
+			print q.pict_url.encode('utf-8')
 		print
+		
 		
 class TwitterTweet(webapp.RequestHandler):
 	def get(self):
@@ -100,7 +103,10 @@ class TwitterTweet(webapp.RequestHandler):
 		
 class Test1(webapp.RequestHandler):
 	def get(self):
-		print "hoge!"
+		print BR
+		print "Auto-generated Sample Tweet:" + BR
+		print "'"+getRandomlySelectedWord()+"'"
+		print BR + BR
 	
 def getRandomlySelectedWord():
 	if debug_flag:
@@ -108,7 +114,9 @@ def getRandomlySelectedWord():
 	else:
 		rand = random.randint(0,MAX_DB)
 	query = db.GqlQuery("SELECT * FROM Message WHERE zid = " + str(rand))
-	word = query[0].word.encode('utf-8')
+	q = query[0]
+	word = q.msg.encode('utf-8') +SPACE+ q.loc.encode('utf-8')+SPACE \
+	       +"<a href='"+q.pict_url.encode('utf-8')+"'>"+q.pict_url.encode('utf-8')+"</a>"
 	return word
 		
 def rfc2datetime(rfc):
@@ -151,7 +159,7 @@ def main():
 	BOT_PASSWORD = 'motivation-zen'
         BR = "<br>"
 	MAX_LEN = 140
-	DEBUG_DB = 3
+	DEBUG_DB = 4
 	MAX_DB = 91864
 	SPACE = " "
 	DT_FORMAT = '%a, %d %b %Y %H:%M:%S'
@@ -165,12 +173,13 @@ def main():
 	
 	
 	application = webapp.WSGIApplication(
-		[('/', CsvUploader),
+		[#('/', CsvUploader),
+		 ('/upload', CsvUploader),
 		 ('/delete', DeleteMessage),
 		 ('/show', ShowMessage),
 		 ('/random', Random),
 		 ('/cron/tweet', TwitterTweet),
-		 ('/test1', Test1)],
+		 ('/test', Test1)],
 		debug=True)
 	wsgiref.handlers.CGIHandler().run(application)
 
